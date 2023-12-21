@@ -1,0 +1,40 @@
+<div class="card" [class.pending-direct-login]="xmUiConfig?.idp?.features?.directLogin?.enabled">
+  <xm-loader [absolute]="true" [showLoader]="xmUiConfig?.idp?.features?.directLogin?.enabled"></xm-loader>
+  <div [hidden]="!isLoginFormView" class="card-header card-header-primary card-header-icon">
+    <h4 class="card-title">
+      {{'ext-common.sign-in-up-widget.sign-in' | translate}}
+    </h4>
+  </div>
+  <div [hidden]="isLoginFormView" class="card-header card-header-primary card-header-icon">
+    <h4 class="card-title">
+      {{'ext-common.sign-in-up-widget.sign-up' | translate}}
+    </h4>
+  </div>
+  <div class="card-body">
+    <div class="text-center">
+      <div *ngIf="config?.signUpEnabled" class="xm-button-group mb-3">
+        <button (click)="changeMode()"
+                [disabled]="isLoginFormView"
+                class="size-sm"
+                mat-flat-button
+                color="primary"
+                type="button">
+          <span>{{'ext-common.sign-in-up-widget.sign-in' | translate}}</span>
+        </button>
+        <button (click)="changeMode()"
+                [disabled]="!isLoginFormView"
+                class="size-sm"
+                mat-flat-button
+                color="primary"
+                type="button">
+          <span>{{'ext-common.sign-in-up-widget.sign-up' | translate}}</span>
+        </button>
+      </div>
+    </div>
+    <xm-login *ngIf="isLoginFormView"
+              [config]="config"
+              [loginLabel]="loginLabel"
+              [successRegistration]="successRegistration"></xm-login>
+    <xm-register *ngIf="!isLoginFormView" [config]="config"></xm-register>
+  </div>
+</div>

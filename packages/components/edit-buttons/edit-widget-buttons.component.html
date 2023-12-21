@@ -1,0 +1,32 @@
+<div class="d-flex" [style.visibility]="isHidden ? 'hidden' : 'visible'" *xmPermission="config?.permissions">
+
+  <button (click)="onEdit($event)"
+          *ngIf="!isEdit"
+          [disabled]="isEditDisabled()"
+          class="btn"
+          [attr.data-qa]="'edit-button'"
+          mat-icon-button
+          type="button">
+    <mat-icon>edit</mat-icon>
+  </button>
+
+  <button (click)="onSave($event)"
+          *ngIf="isEdit"
+          [disabled]="isSaveDisabled() || disableSubmit"
+          color="primary"
+          [attr.data-qa]="'save-button'"
+          mat-icon-button
+          type="button">
+    <mat-icon>check</mat-icon>
+  </button>
+
+  <button (click)="onCancel($event)"
+          [disabled]="isCancelDisabled()"
+          *ngIf="isEdit"
+          [attr.data-qa]="'cancel-button'"
+          mat-icon-button
+          type="button">
+    <mat-icon>close</mat-icon>
+  </button>
+
+</div>

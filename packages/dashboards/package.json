@@ -1,0 +1,17 @@
+{
+  "name": "@xm-ngx/dashboards",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xm-online/xm-webapp.git",
+    "directory": "packages/dashboards"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "got": "^11.8.6",
+    "lodash": "4.17.21",
+    "yargs": "17.6.0"
+  }
+}

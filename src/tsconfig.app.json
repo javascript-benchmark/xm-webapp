@@ -1,0 +1,36 @@
+{
+  "extends": "../tsconfig",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "./main.ts",
+    "./polyfills.ts"
+  ],
+  "include": [
+    "./src/**/*.d.ts"
+  ],
+  "exclude": [
+    "../test.ts",
+    "lib",
+    "packages",
+    "**/testing/**",
+    "environments",
+    "./**/*.spec.ts",
+    "./**/*.e2e-spec.ts",
+    "./**/*.po.ts"
+  ],
+  "angularCompilerOptions": {
+    "annotateForClosureCompiler": true,
+    "skipTemplateCodegen": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "preserveWhitespaces": true,
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": false
+  }
+}

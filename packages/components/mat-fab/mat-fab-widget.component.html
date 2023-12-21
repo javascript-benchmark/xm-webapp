@@ -1,0 +1,15 @@
+<ng-container *xmPermission="config.permitted">
+  <ng-container *xmIfDashboardSlug="config.permittedByDashboardSlug">
+    <div *ngIf="config.indent" class="w-100 indent"></div>
+
+    <a [color]="config.color"
+       [routerLink]="this.config.navigateTo"
+       [queryParams]="this.config.queryParams"
+       class="mat-fab-button"
+       mat-fab
+       [matTooltip]="config.tooltip | translate"
+       routerLinkActive="active">
+      <mat-icon>{{config.icon}}</mat-icon>
+    </a>
+  </ng-container>
+</ng-container>

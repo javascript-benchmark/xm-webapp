@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <base href="/">
+  <meta charset="utf-8"/>
+  <link id="favicon" rel="icon" type="image/png"/>
+  <meta content="IE=11" http-equiv="X-UA-Compatible"/>
+  <title>loading...</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+  <meta content="width=device-width" name="viewport"/>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css"/>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-180x180.png"/>
+</head>
+<body class="xm-body">
+<xm-main>
+  <div class="loader">
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" fill="none" r="20" stroke-miterlimit="10" stroke-width="2"></circle>
+    </svg>
+  </div>
+</xm-main>
+<div id="xm-old-browsers-popup"></div>
+
+<script src="/assets/js/js-marker-clusterer/markerclusterer.js"></script>
+<script src="/assets/js/markdown/marked.min.js"></script>
+<script src="/assets/js/qrcode/qrcode.min.js"></script>
+<script src="/assets/js/nomnoml/skanaar.vector.js"></script>
+<script src="/assets/js/nomnoml/underscore.min.js"></script>
+<script src="/assets/js/nomnoml/dagre.min.js"></script>
+<script src="/assets/js/old-browsers/index.js"></script>
+<script type="text/javascript">
+  /*var scriptsMap = [
+    'https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js',
+    'https://unpkg.com/babel-standalone@6/babel.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/babili-standalone/0.0.8/babili.min.js'
+  ];*/
+  if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+    document.write('<script type="text/javascript" src="/assets/js/ie/es6-shim.min.js"><\/script>');
+    document.write('<script type="text/javascript" src="/assets/js/ie/babel.min.js"><\/script>');
+    document.write('<script type="text/javascript" src="/assets/js/ie/babili.min.js"><\/script>');
+  }
+</script>
+<noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+</html>

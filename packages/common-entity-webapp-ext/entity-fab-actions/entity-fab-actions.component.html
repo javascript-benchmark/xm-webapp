@@ -1,0 +1,53 @@
+<ng-container *ngIf="config && mainButton?.permitted">
+  <div class="xm-antity-fab-actions">
+    <div class="xm-fab">
+      <div class="xm-fab-drop">
+        <ng-container *ngFor="let button of this.buttons">
+          <ng-container *ngIf="!button.condition || (button.condition | xmCondition: fabButtonContext)">
+            <ng-container *ngIf="button?.isRouterLink; then routerAction else functionAction"></ng-container>
+
+            <ng-template #functionAction>
+              <button (click)="onAddNew(button)"
+                      *permitted="button?.permitted"
+                      [style.backgroundColor]="button?.bgColor"
+                      [style.color]="button?.color"
+                      class="xm-fab-option fab-link">
+                <ng-container *ngIf="button?.icon === 'no-icon'; then noIconTpl else iconTpl"></ng-container>
+                <span *ngIf="button?.title" class="fab-title">{{ button?.title | translate }}</span>
+              </button>
+            </ng-template>
+
+            <ng-template #routerAction>
+              <button (click)="onRouterAction(button)"
+                      *permitted="button?.permitted"
+                      [style.backgroundColor]="button?.bgColor"
+                      [style.color]="button?.color"
+                      class="xm-fab-option fab-link">
+                <ng-container *ngIf="button?.icon === 'no-icon'; then noIconTpl else iconTpl"></ng-container>
+                <span *ngIf="button?.title" class="fab-title">{{ button?.title | translate }}</span>
+              </button>
+            </ng-template>
+
+            <ng-template #noIconTpl>
+              <span class="chars-like-icon">{{button?.label | translate}}</span>
+            </ng-template>
+
+            <ng-template #iconTpl>
+              <mat-icon>{{button?.icon}}</mat-icon>
+            </ng-template>
+          </ng-container>
+        </ng-container>
+      </div>
+      <button (click)="onAddNew(mainButton)"
+              *permitted="mainButton?.permitted"
+              [style.backgroundColor]="mainButton?.bgColor"
+              [style.color]="mainButton?.color"
+              class="xm-fab-button fab-main-button">
+        <mat-icon>{{ mainButton?.icon }}</mat-icon>
+        <span *ngIf="mainButton?.title" class="fab-title">{{ mainButton?.title | translate }}</span>
+      </button>
+    </div>
+  </div>
+</ng-container>
+
+

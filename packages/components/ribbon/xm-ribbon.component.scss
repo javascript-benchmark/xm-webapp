@@ -1,0 +1,30 @@
+@import '@xm-ngx/styles/theming';
+
+$xm-ribbon-opacity: 0.5 !default;
+$xm-ribbon-z-index: 9999 !default;
+$xm-ribbon-width:   200px !default;
+$xm-ribbon-padding: 1rem 50px !default;
+
+$ribbon:            $xm-ribbon-width * 1.41421356237;
+.xm-ribbon {
+  position:         absolute;
+  right:            -37%;
+  top:              10%;
+  text-align:       center;
+  padding:          $xm-ribbon-padding;
+  width:            $ribbon;
+  font-weight:      bold;
+  opacity:          $xm-ribbon-opacity;
+  @include transform(rotate(45deg));
+  @include truncate($ribbon);
+}
+
+:host {
+  pointer-events: none;
+  z-index:        $xm-ribbon-z-index;
+  position:       fixed;
+  right:          0;
+  top:            0;
+  width:          $xm-ribbon-width;
+  height:         $xm-ribbon-width;
+}

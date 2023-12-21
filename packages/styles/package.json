@@ -1,0 +1,19 @@
+{
+  "name": "@xm-ngx/styles",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xm-online/xm-webapp.git",
+    "directory": "packages/styles"
+  },
+  "scripts": {
+    "build": "ng-packagr -p . -c ../../tsconfig.ngc.json"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
+}

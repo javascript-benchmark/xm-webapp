@@ -1,0 +1,17 @@
+<div *ngIf="balances && balances.length > 0" class="card">
+  <div class="card-header card-header-icon card-header-primary">
+    <h4 class="card-title">{{'xm-balance.balance-list-card.title'|translate}}</h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div #balanceSections (click)="onClickDetail(balance.id)" *ngFor="let balance of balances"
+           class="col-sm-6 balance-section">
+        <div [id]="'balance-pie-' + balance.id" class="ct-chart"></div>
+        <div>
+          <p class="balance-name">{{getBalanceSpec(balance).name | translate}}</p>
+          <h5 class="balance-amount">{{balance.amount}} {{getMeasureSpec(balance).name | translate}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

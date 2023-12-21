@@ -1,0 +1,5 @@
+@import '@xm-ngx/styles/theming';
+
+.xmGuestBackground-active {
+  @include xm-shadow-xs();
+}

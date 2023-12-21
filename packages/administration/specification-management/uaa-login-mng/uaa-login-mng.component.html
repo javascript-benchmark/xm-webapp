@@ -1,0 +1,28 @@
+<div class="text-center pb-3">
+  <button (click)="validateLoginsSpecification();"
+          *ngIf="!isUaaLoginSpecValid"
+          color="primary"
+          mat-flat-button
+          type="submit"
+          [disabled]="disabled">
+    {{'admin-config.specification-mng.validate' | translate}}
+  </button>
+  <button (click)="updateLoginsSpecification();"
+          *ngIf="isUaaLoginSpecValid"
+          color="primary"
+          mat-flat-button
+          type="submit"
+          [disabled]="disabled">
+    {{'admin-config.specification-mng.uaa-login.save' | translate}}
+  </button>
+  <div class="text-center">
+    <div *ngIf="loginsValidation && !loginsValidation.valid" [innerHtml]="loginsValidation?.errorMessage"
+         class="text-danger">
+    </div>
+  </div>
+</div>
+<div class="text-end">
+  <xm-ace-editor-control (valueChange)="onLoginsSpecificationChange($event)"
+                         [config]="aceEditorOptions"
+                         [value]="loginsSpecificationIn"></xm-ace-editor-control>
+</div>

@@ -1,0 +1,37 @@
+<div *ngIf="xmEntity" class="row">
+  <!-- TODO: use masonry layout -->
+  <div class="col-lg-6">
+    <div *ngFor="let linkSpec of linkSpecs; let even = even">
+      <xm-link-list-card *ngIf="even"
+                         [linkSpec]="linkSpec"
+                         [links]="filterLinks(linkSpec.model)"
+                         [modes]="getModes(linkSpec.model)"
+                         [xmEntity]="xmEntity">
+      </xm-link-list-card>
+    </div>
+    <div *ngFor="let backLinkSpec of filterBackLinkSpecs(); let even = even">
+      <xm-link-list-card *ngIf="even"
+                         [isBackLink]="true"
+                         [linkSpec]="backLinkSpec"
+                         [links]="filterLinks(backLinkSpec.model)">
+      </xm-link-list-card>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div *ngFor="let linkSpec of linkSpecs; let odd = odd">
+      <xm-link-list-card *ngIf="odd"
+                         [linkSpec]="linkSpec"
+                         [links]="filterLinks(linkSpec.model)"
+                         [modes]="getModes(linkSpec.model)"
+                         [xmEntity]="xmEntity">
+      </xm-link-list-card>
+    </div>
+    <div *ngFor="let backLinkSpec of filterBackLinkSpecs(); let odd = odd">
+      <xm-link-list-card *ngIf="odd"
+                         [isBackLink]="true"
+                         [linkSpec]="backLinkSpec"
+                         [links]="filterLinks(backLinkSpec.model)">
+      </xm-link-list-card>
+    </div>
+  </div>
+</div>

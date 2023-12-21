@@ -1,0 +1,11 @@
+<div *ngFor="let commentSpec of commentSpecs" class="mb-4">
+  <ng-container *ngIf="comments?.length > 0">
+    <div class="text-center">
+      <h3 class="title">
+        <span class="text-muted">{{commentSpec.name | translate}}</span>
+      </h3>
+    </div>
+
+    <xm-comment-card *ngFor="let comment of comments" [comment]="comment"></xm-comment-card>
+  </ng-container>
+</div>

@@ -1,0 +1,30 @@
+.xm-sign-in-form {
+}
+
+.xm-sign-in-form-banner-container {
+  position: relative;
+}
+
+.xm-sign-in-form-banner-img {
+  background-repeat:   no-repeat;
+  background-position: center;
+  background-position: 50% 50%;
+  position:            absolute;
+  min-height:          100%;
+  object-fit:          cover;
+  height:              100%;
+  width:               100%;
+}
+
+.xm-sign-in-form-top-logo {
+  height:     54px;
+  margin-top: 3rem;
+
+  img {
+    max-height: 100%;
+  }
+
+  .brand {
+    font-weight: 900;
+  }
+}

@@ -1,0 +1,32 @@
+<div *ngIf="config.name" class="header text-center">
+  <h3 class="title">{{config.name}}</h3>
+</div>
+
+<div *ngFor="let i of rows" class="row">
+  <div *ngFor="let offering of offerings | slice:(i * rowSize):(i + 1) * rowSize"
+       [ngClass]="'col-sm-' + (12 / rowSize)">
+    <div class="card card-product">
+      <div class="card-header card-header-image">
+        <img *ngIf="resolveAvatarUrl(offering)" [src]="resolveAvatarUrl(offering)" class="img">
+      </div>
+      <div class="card-body">
+        <div class="card-actions">
+          <button class="btn btn-danger btn-simple fix-broken-card" type="button">
+            <mat-icon>build</mat-icon>
+          </button>
+        </div>
+        <h4 class="card-title offering-title">
+          <a>{{offering.name}}</a>
+        </h4>
+      </div>
+      <div class="card-footer">
+        <div class="card-description">
+          <h4 class="offering-description">{{offering.description}}</h4>
+          <button (click)="onAction(offering)" *ngIf="config.action?.enabled" class="btn btn-primary">
+            {{config.action.name | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

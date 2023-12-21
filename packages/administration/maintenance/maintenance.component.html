@@ -1,0 +1,42 @@
+<mat-card>
+  <div class="d-flex justify-content-center align-items-center mb-2">
+
+    <ng-container *ngIf="config.showReindex">
+      <button (click)="reindexElastic()"
+              *xmPermitted="['ELASTICSEARCH.INDEX']"
+              color="primary"
+              mat-button>
+        {{'global.common.maintenance-reindex-elastic' | translate}}
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="showRefreshAll$ | async">
+    <button (click)="updateTenantsConfiguration()"
+            *xmPermitted="['CONFIG.ADMIN.REFRESH']"
+            color="primary"
+            mat-button>
+      <mat-icon>warning</mat-icon>
+      {{'global.common.maintenance-update-tenants-configuration' | translate}}
+    </button>
+    </ng-container>
+
+    <button (click)="updateTenantConfiguration()"
+            *xmPermitted="['CONFIG.CLIENT.REFRESH']"
+            [ngClass]="{'loading' : isTenantCfgUpdating}"
+            color="primary"
+            mat-button>
+      {{'global.common.maintenance-update-tenant-configuration' | translate}}
+    </button>
+
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <button (click)="importEntities()" color="primary" mat-button>
+      {{'global.common.maintenance-import-entities' | translate}}
+    </button>
+
+    <button (click)="exportEntities()" color="primary" mat-button>
+      {{'global.common.maintenance-export-entities' | translate}}
+    </button>
+  </div>
+</mat-card>

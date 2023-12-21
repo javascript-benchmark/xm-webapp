@@ -1,0 +1,19 @@
+@mixin angular2-json-schema-form-xm-override() {
+  /**
+    * angular2-json-schema incorrectly override this class with ::ng-deep
+    * restore default value
+    */
+  mat-form-field.mat-form-field {
+    display:    initial;
+    position:   initial;
+    text-align: initial;
+  }
+
+  /**
+   * fix layout problem between material flex and ajsf
+   */
+  json-schema-form flex-layout-root-widget.form-flex-column > div,
+  json-schema-form xm-flex-layout-root-widget > div.form-flex-column > div {
+    flex: 1 1 100% !important;
+  }
+}

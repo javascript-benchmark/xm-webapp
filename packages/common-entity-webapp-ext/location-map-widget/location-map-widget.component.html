@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-header card-header-icon card-header-primary">
+    <h4 class="card-title">{{name}}</h4>
+  </div>
+  <div class="card-body">
+    <div *ngIf="groups?.length > 1" class="xm-button-group mb-3">
+      <button (click)="showGroup(group)"
+              *ngFor="let group of groups"
+              [class.active]="currentGroup === group"
+              class="size-sm"
+              color="primary"
+              mat-flat-button>
+        {{group.name}}
+      </button>
+    </div>
+    <ng-template (gMapApiReady)="onAfterGMapApiInit()" xmGMapApiInit>
+      <div [id]="mapId" class="map"></div>
+    </ng-template>
+  </div>
+</div>

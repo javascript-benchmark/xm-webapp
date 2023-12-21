@@ -1,0 +1,13 @@
+.block-state-functions {
+  display: flex;
+  margin: 0 0 5px 0;
+
+  .xm-state {
+    margin: 0 20px 10px 0;
+    cursor: pointer;
+    white-space: nowrap;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

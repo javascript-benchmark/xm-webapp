@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>
+  {{TRS.feedback | translate}}
+  <xm-modal-close mat-dialog-close></xm-modal-close>
+</h1>
+
+<div mat-dialog-content>
+  <p>{{TRS.feedbackDetails | translate}}</p>
+
+  <xm-text-control [(ngModel)]="data.topic"
+                   [config]="{title: TRS.title, maxLength: 100, required: false}">
+  </xm-text-control>
+
+  <xm-text-range-control [(ngModel)]="data.message"
+                         [config]="{title: TRS.description, rows:'7', maxLength: 500, required: true}">
+  </xm-text-range-control>
+
+  <xm-labeled-view-container [config]="{title: TRS.image}">
+    <xm-checkbox-control [(ngModel)]="attachImage" [config]="{title: TRS.attachImage}"></xm-checkbox-control>
+
+    <xm-image [value]="data.image"
+              class="w-100 text-center"
+              *ngIf="attachImage"
+              [config]="{imageStyle: 'max-height: 200px'}"></xm-image>
+  </xm-labeled-view-container>
+
+</div>
+
+<div mat-dialog-actions>
+  <button class="ms-auto"
+          mat-flat-button
+          color="primary"
+          [disabled]="!data.message.length"
+          (click)="submit()">{{ TRS.send | translate }}
+  </button>
+
+  <button mat-flat-button (click)="dialogRef.close(false)">{{ TRS.cancel | translate }}</button>
+</div>

@@ -1,0 +1,45 @@
+<ng-container *ngIf="user">
+
+  <!-- title -->
+  <div (click)="toggle()"
+       (keyup.enter)="toggle()"
+       [ngClass]="getState()"
+       class="user-title"
+       role="button"
+       tabindex="0">
+    <img [alt]="user.avatarUrl" [src]="user.avatarUrl" class="user-img" onerror="this.src='./assets/img/anonymous.png'">
+    <div>
+      <div class="user-name">{{ user.username }}</div>
+
+      <div *ngFor="let subtitle of config?.subtitles" class="sidebar-user-subtitles">
+        <sidebar-user-subtitle [options]="subtitle" [value]="user.user"></sidebar-user-subtitle>
+      </div>
+
+    </div>
+    <span [@indicatorRotate]="getState()"
+       class="mat-expansion-indicator"></span>
+  </div>
+</ng-container>
+
+<!-- menu -->
+<ul [@bodyExpansion]="getState()"
+    [ngClass]="getState()"
+    class="menu-list">
+  <ng-container *ngFor="let item of menu$ | async as menu">
+    <li
+      *permitted="item.permission"
+      [item]="item"
+      class="menu-item"
+      xm-menu-link>
+    </li>
+  </ng-container>
+  <!--  logout is available for all users -->
+  <li
+    [item]="logoutControl"
+    class="menu-item"
+    xm-menu-link>
+  </li>
+</ul>
+<!-- ./menu -->
+
+

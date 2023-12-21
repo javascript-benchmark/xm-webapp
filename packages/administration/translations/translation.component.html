@@ -1,0 +1,33 @@
+<mat-card>
+    <h4>{{'translate-managment.title' | translate}}</h4>
+
+    <header class="translate__header">
+        <div class="translate__header-toggle">
+            <mat-button-toggle-group *ngIf="extNames$ | async as extNames"
+                                     (change)="setExt($event.value)"
+                                     [value]="extNames[0]"
+                                     name="extsName"
+                                     class="translate__toggle-group"
+                                     aria-label="Exts name">
+                <mat-button-toggle *ngFor="let extNames of extNames" [value]="extNames">{{extNames}}</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <mat-button-toggle-group *ngIf="langs$ | async as langs"
+                                     (change)="setLang($event.value)"
+                                     [value]="langs[0]"
+                                     name="lang"
+                                     class="translate__toggle-group"
+                                     aria-label="lang">
+                <mat-button-toggle *ngFor="let lang of langs" [value]="lang">{{lang}}</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+
+
+        <div class="translate__button-group">
+            <button mat-raised-button (click)="downloadAssets()">{{'translate-managment.download-button' | translate}}</button>
+            <button mat-raised-button (click)="clearCache()">{{'translate-managment.clear-cache-button' | translate}}</button>
+        </div>
+    </header>
+
+    <xm-keys-view [json]="translations$ | async" (updateTranslate)="updateTranslate($event)"></xm-keys-view>
+</mat-card>

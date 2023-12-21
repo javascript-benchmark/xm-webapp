@@ -1,0 +1,34 @@
+.xm-md-edit {
+  margin-bottom: 30px;
+  margin-top:    30px;
+
+  ::ng-deep {
+    .editor-toolbar {
+      &.disabled-for-preview {
+        display: none;
+      }
+    }
+
+    .CodeMirror-fullscreen, .fullscreen {
+      z-index: 931;
+    }
+  }
+
+  .header-action {
+    position:    absolute;
+    right:       10px;
+    top:         8px;
+    width:       30px;
+    height:      30px;
+    text-align:  center;
+    line-height: 30px;
+    z-index:     5;
+    display:     inline-block;
+  }
+
+  .wtd-md-action {
+    position: absolute;
+    top:      0;
+    right:    20px;
+  }
+}

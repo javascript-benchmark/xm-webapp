@@ -1,0 +1,51 @@
+{
+  "name": "@xm-ngx/cli",
+  "version": "0.0.1",
+  "description": "Extension Management Utilities",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xm-online/xm-webapp.git",
+    "directory": "packages/cli"
+  },
+  "keywords": [
+    "xm-ngx",
+    "cli"
+  ],
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Xm team",
+  "bugs": {
+    "url": "https://github.com/xm-online/xm-webapp/issues"
+  },
+  "homepage": "https://github.com/xm-online/xm-webapp/tree/develop/packages/cli",
+  "dependencies": {
+    "lodash": "4.17.21",
+    "sass": "1.54.7",
+    "glob": "10.3.3",
+    "ts-morph": "18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.7",
+    "@types/node-sass": "4.11.1",
+    "typescript": "4.7.4",
+    "conventional-changelog": "3.1.25",
+    "conventional-changelog-cli": "2.2.2",
+    "@commitlint/cli": "17.6.1",
+    "@commitlint/config-conventional": "17.6.1",
+    "husky": "8.0.3",
+    "@types/glob": "8.1.0"
+  },
+  "scripts": {
+    "start": "npx tsc --watch",
+    "build": "ng-packagr -p . -c ../../tsconfig.ngc.json",
+    "changelog": "cd ../../ &&  conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+  },
+  "bin": {
+    "xm-ngx": "./bin/xm-ngx.js"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  }
+}

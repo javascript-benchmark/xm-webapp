@@ -1,0 +1,26 @@
+$xm-tab-list-header-height: 48px;
+
+.xm-tabs-lists {
+  ::ng-deep {
+    .mat-tab-body-content {
+      padding-top: $xm-tab-list-header-height;
+
+      &:before {
+        content:          '';
+        position:         absolute;
+        left:             0;
+        top:              $xm-tab-list-header-height;
+        height:           1px;
+        width:            100%;
+        background-color: #dee2e6;
+      }
+    }
+
+    .mat-tab-header {
+      border-bottom: none;
+      width:         calc(100% - 50px);
+      margin-bottom: -$xm-tab-list-header-height;
+      z-index:       10;
+    }
+  }
+}

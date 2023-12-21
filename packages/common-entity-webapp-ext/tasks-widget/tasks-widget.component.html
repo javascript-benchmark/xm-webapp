@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header card-header-tabs card-header-primary">
+    <span class="nav-tabs-title"><span>{{config?.name ? config?.name : 'Tasks'}}</span>:</span>
+    <ul class="nav nav-tabs" data-tabs="tabs">
+      <li *ngFor="let task of tasks; index as i; first as isFirst" [ngClass]="{active: i == activeId}"
+          class="nav-item">
+        <a (click)="setActive(i)"
+           [ngClass]="{active: i == activeId}"
+           class="nav-link"
+           data-toggle="tab"
+           href="{{'#task-group-' + i}}">
+          {{task.title}}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="tab-content">
+      <div *ngFor="let task of tasks; index as i; first as isFirst" [ngClass]="{active: i == activeId}" class="tab-pane"
+           id="{{'task-group-' + i}}">
+        <table class="table">
+          <tbody>
+          <tr *ngFor="let item of task.list">
+            <td>
+              <div class="form-group">
+                <mat-checkbox (click)="onChange(item)" [(ngModel)]="item.isChecked" class="mat-label-m-0"
+                              color="primary"
+                              name="optionsCheckboxes">
+                </mat-checkbox>
+              </div>
+            </td>
+            <td>{{item.title}}</td>
+            <td class="td-actions text-end">
+              <button (click)="onEdit(item)"
+                      data-original-title="Edit Task"
+                      mat-icon-button
+                      color="primary"
+                      rel="tooltip"
+                      type="button">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button (click)="onRemove(item)"
+                      data-original-title="Remove"
+                      mat-icon-button
+                      color="warn"
+                      rel="tooltip"
+                      type="button">
+                <mat-icon>close</mat-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

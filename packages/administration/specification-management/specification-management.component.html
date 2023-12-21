@@ -1,0 +1,30 @@
+<ul class="nav nav-pills nav-pills-primary nav-pills-icons justify-content-center mb-3" role="tablist">
+  <li *ngFor="let type of specificationTypes" class="nav-item">
+    <a [class.active]="type.slug === currentSpecificationSlug"
+       [queryParams]="{slug: type.slug}"
+       [routerLink]="'.'"
+       class="nav-link" data-toggle="tab"
+       role="tab">
+      <mat-icon>{{type.icon}}</mat-icon>
+      <span translate="admin-config.specification-mng.{{type.slug}}.title"></span>
+    </a>
+  </li>
+</ul>
+
+<mat-card [ngSwitch]="currentSpecificationSlug" class="mb-3">
+
+  <xm-ui-mng *ngSwitchCase="'ui'" [disabled]="disabled"></xm-ui-mng>
+
+  <xm-entity-spec-mng *ngSwitchCase="'entity'" [disabled]="disabled"></xm-entity-spec-mng>
+
+  <xm-uaa-mng *ngSwitchCase="'uaa'" [disabled]="disabled"></xm-uaa-mng>
+
+  <xm-uaa-login-mng *ngSwitchCase="'uaa-login'" [disabled]="disabled"></xm-uaa-login-mng>
+
+  <xm-timeline-mng *ngSwitchCase="'timeline'" [disabled]="disabled"></xm-timeline-mng>
+
+  <xm-tenant-mng *ngSwitchCase="'tenant'" [disabled]="disabled"></xm-tenant-mng>
+
+  <xm-private-ui-mng *ngSwitchCase="'privateui'" [disabled]="disabled"></xm-private-ui-mng>
+
+</mat-card>

@@ -1,0 +1,15 @@
+<div class="row mb-3">
+  <div *ngFor="let item of stats" class="col-lg-3 col-md-6 col-sm-6 mt-3 mb-3">
+    <mat-card class="xm-stat-card">
+      <mat-card-content class="xm-stat-card-content">
+        <div mat-card-image [style.background-color]="item.color">
+          <mat-icon>{{item.icon}}</mat-icon>
+        </div>
+        <div>
+          <mat-card-title>{{item.value | async}}</mat-card-title>
+          <mat-card-subtitle>{{item.name | translate}}</mat-card-subtitle>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

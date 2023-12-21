@@ -1,0 +1,13 @@
+export * from './activate';
+export * from './help';
+export * from './password';
+export * from './password-settings';
+export * from './logout';
+export * from './idp-callback';
+export * from './login-error';
+export * from './password-reset/init';
+export * from './password-reset/finish';
+export * from './sign-up';
+export * from './settings';
+export { GateAccountModule } from './account.module';
+export * from './route';

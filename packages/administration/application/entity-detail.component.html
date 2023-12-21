@@ -1,0 +1,4 @@
+<xm-dynamic-widget *ngIf="xmEntity?.id && spec"
+                   [init]="{module: 'ext-common-entity', component: 'xm-widget-entity', config: { xmEntityId: xmEntity?.id }, spec: spec}">
+</xm-dynamic-widget>
+

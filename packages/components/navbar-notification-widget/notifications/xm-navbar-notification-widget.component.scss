@@ -1,0 +1,118 @@
+@mixin transition($property: all, $duration: 0.3s, $ease: linear) {
+  -webkit-transition: $property $duration $ease;
+  -moz-transition: $property $duration $ease;
+  -o-transition: $property $duration $ease;
+  transition: $property $duration $ease;
+}
+
+.xm-notifications {
+  .notifications-bell {
+    color: rgb(85, 85, 85);
+  }
+}
+
+::ng-deep.xm-notification-menu {
+  min-width: 280px !important;
+  max-width: 340px !important;
+}
+
+.xm-notification-item {
+  padding: 10px 30px 10px 16px;
+  height: auto;
+  line-height: 1.5;
+  white-space: normal;
+  outline: none;
+
+  ::ng-deep {
+    .alert-status {
+      margin-top: 3px;
+      margin-bottom: 3px;
+      display: flex;
+      padding: 0 0 0 30px;
+      position: relative;
+    }
+
+    .alert-status-icon {
+      width: 24px;
+      height: 24px;
+      display: block;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 24px;
+      box-shadow: 0 0 0 1px #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      i.material-icons {
+        font-size: 14px;
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &.hasDate {
+    padding-bottom: 30px;
+
+    .update-date {
+      position: absolute;
+      left: 0;
+      bottom: 8px;
+      text-align: right;
+      width: 100%;
+      padding: 0 30px;
+      height: 20px;
+      line-height: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  &.show-all-link {
+    color: #555555;
+    font-size: 16px;
+    margin: 8px 0 0 0;
+    font-weight: normal;
+    border-top: 1px solid #ccc;
+    text-align: right;
+
+    &.empty-list{
+      margin: 0 0 0 0;
+      border-top: none;
+    }
+  }
+
+  .update-date {
+    font-size: 9px;
+    display: block;
+    margin: 4px 0 0;
+  }
+
+  .close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin: 9px 10px 0 0;
+    border-radius: 2px;
+    cursor: pointer;
+    background: transparent;
+    @include transition(background, 0.3s, ease-in);
+
+    &:hover {
+      background: rgba(#000, 0.1);
+    }
+  }
+}

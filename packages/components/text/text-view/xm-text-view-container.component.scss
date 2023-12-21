@@ -1,0 +1,26 @@
+@import '@xm-ngx/styles/theming';
+
+$xm-text-label-font-size: $xm-font-size-xm !default;
+
+.xm-text-view--label {
+  font-size:     $xm-text-label-font-size;
+  margin-right:  0.5rem;
+  margin-bottom: 0;
+}
+
+.xm-text-view--value {
+  margin-bottom: 0;
+}
+
+:host {
+  display:       block;
+  margin-bottom: .5rem;
+}
+
+:host.inline {
+  margin-bottom: 0;
+
+  .xm-text-view--label, .xm-text-view--value {
+    display: inline-block;
+  }
+}

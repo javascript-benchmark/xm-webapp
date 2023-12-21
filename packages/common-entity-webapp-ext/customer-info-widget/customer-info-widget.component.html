@@ -1,0 +1,196 @@
+<div class="card mb-5">
+  <div class="card-header card-header-icon card-header-primary">
+    <h4 class="card-title">
+      <span>{{'nemondo.widget.customerInfo.title'|translate}}</span>
+      <span [ngSwitch]="state">
+        <span *ngSwitchCase="'ON-REVIEW'">{{'nemondo.state.ON-REVIEW'|translate}}</span>
+        <span *ngSwitchCase="'VIDEO-VERIFIED'">{{'nemondo.state.VIDEO-VERIFIED'|translate}}</span>
+        <span *ngSwitchCase="'UPDATE-NEEDED'">{{'nemondo.state.UPDATE-NEEDED'|translate}}</span>
+        <span *ngSwitchDefault></span>
+      </span>
+    </h4>
+  </div>
+  <div class="card-body">
+    <form (submit)="submitForm()" [formGroup]="form" name="customerInfoForm" novalidate>
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label class="mb-0" for="firstName">{{'global.form.firstname'|translate}}</label>
+          <mat-form-field>
+            <input formControlName="firstName"
+                   id="firstName"
+                   matInput
+                   required
+                   type="text">
+            <mat-error>
+              {{'nemondo.invalid.firstName' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-4">
+          <label class="mb-0" for="lastName">{{'global.form.lastname'|translate}}</label>
+          <mat-form-field>
+            <input formControlName="lastName"
+                   id="lastName"
+                   matInput
+                   required
+                   type="text">
+            <mat-error>
+              {{'nemondo.invalid.lastName' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label class="mb-0" for="countryCode">{{'nemondo.countryCode'|translate}}</label>
+          <mat-form-field>
+            <mat-select formControlName="countryCode"
+                        id="countryCode"
+                        required>
+              <mat-option *ngFor="let c of countries"
+                          [value]="c.code">
+                {{c.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              {{'nemondo.invalid.countryCode' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-4">
+          <label class="mb-0" for="locality">{{'nemondo.locality'|translate}}</label>
+          <mat-form-field>
+            <input formControlName="locality"
+                   id="locality"
+                   matInput
+                   required
+                   type="text">
+            <mat-error>
+              {{'nemondo.invalid.locality' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-2">
+          <label class="mb-0" for="zip">{{'nemondo.zip'|translate}}</label>
+          <mat-form-field>
+            <input formControlName="zip"
+                   id="zip"
+                   matInput
+                   required
+                   type="text">
+            <mat-error>
+              {{'nemondo.invalid.zip' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-group">
+            <label for="address1">{{'nemondo.address1'|translate}}</label>
+            <mat-form-field>
+              <input formControlName="address1"
+                     id="address1"
+                     matInput
+                     required
+                     type="text">
+              <mat-error>
+                {{'nemondo.invalid.address' | translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label for="address2">{{'nemondo.address2'|translate}}</label>
+            <mat-form-field>
+              <input formControlName="address2"
+                     id="address2"
+                     matInput
+                     type="text">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="phone">{{'nemondo.phone'|translate}}</label>
+            <mat-form-field>
+              <input formControlName="phone"
+                     id="phone"
+                     matInput
+                     type="text">
+              <mat-error>
+                {{'nemondo.invalid.phone' | translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div *ngIf="showCurrencies" class="form-group">
+            <label for="localCurrency">{{'nemondo.localCurrency'|translate}}</label>
+            <mat-form-field>
+              <mat-select formControlName="localCurrency"
+                          id="localCurrency"
+                          required>
+                <mat-option *ngFor="let c of currencies"
+                            [value]="c">
+                  {{c}}
+                </mat-option>
+              </mat-select>
+              <mat-error>
+                {{'nemondo.invalid.localCurrency' | translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div *ngIf="form.enabled" class="row">
+        <div class="col-md-12">
+          <button [disabled]="form.invalid"
+                  class="btn pull-right"
+                  color="primary"
+                  mat-button>
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="uploadFileEnabled" class="card">
+  <div class="card-header card-header-icon card-header-primary">
+    <h4 class="card-title">
+      <span>{{'tsg.tsgAttachments'|translate}}</span>
+      <small>{{'tsg.tsgAddAttachmentsDescription'|translate}}</small>
+    </h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="attachments-list">
+          <xm-loader [showLoader]="showAttachmentLoader"></xm-loader>
+          <div *ngFor="let attachment of attachments | async" class="attachment-element">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="attach-name">{{attachment.name ? attachment.name : 'no name'}}</div>
+              </div>
+              <div class="col-md-6">
+                <div class="attach-description">{{attachment.description ? attachment.description : 'no description'}}
+                </div>
+              </div>
+            </div>
+            <a (click)="onRemoveAttachment(attachment)" *permitted="'ATTACHMENT.DELETE'" [class.hidden]="!form.enabled"
+               class="remove-attachment" href="javascript:void(0)">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </div>
+        </div>
+        <button (click)="onAddAttachment()"
+                *permitted="'ATTACHMENT.CREATE'"
+                [class.hidden]="!form.enabled"
+                class="btn pull-right"
+                mat-button>
+          {{'tsg.tsgAddAttachments' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+@import '../menu/menu-theme';
+
+@mixin xm-user-theme($theme) {
+  .user-title {
+    @include xm-menu-link-theme($theme);
+  }
+
+  .user-name {
+    font-size:     $xm-font-size-sm;
+    font-weight:   500;
+  }
+}
