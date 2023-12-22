@@ -3,8 +3,8 @@
   "dependencies": {
     "@storybook/addon-essentials": "7.4.6",
     "@storybook/addon-interactions": "7.4.6",
-    "@storybook/addon-links": "7.4.6",
-    "@storybook/angular": "7.4.6",
+    "@storybook/addon-links": "7.6.3",
+    "@storybook/angular": "7.6.3",
     "@storybook/blocks": "7.4.6",
     "@storybook/testing-library": "0.2.2",
     "eslint-plugin-storybook": "0.6.15",
