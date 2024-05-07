@@ -12,6 +12,6 @@
   "dependencies": {
     "got": "^11.8.6",
     "lodash": "4.17.21",
-    "yargs": "17.6.0"
+    "yargs": "17.7.2"
   }
 }
